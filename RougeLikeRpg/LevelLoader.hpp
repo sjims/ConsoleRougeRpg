@@ -22,7 +22,7 @@ using namespace std;
 class LevelLoader {
     
 public:
-    
+    void MoveEnemy();
     void LoadFromFile();
     void LevelUpdate(char dir);
     void LevelRefresh();

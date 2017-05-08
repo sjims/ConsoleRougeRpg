@@ -23,7 +23,7 @@ public:
     int Y=0;
     
     char GotDir();
-    
+    Enemy();
 };
 
 

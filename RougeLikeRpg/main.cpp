@@ -33,63 +33,36 @@ int main()
     level.LoadFromFile();
     while(true)
     {
-           // level.LevelRefresh();
+        
         
         dead = player.HP>0;
-    //input = getch();
-   // cout<<refreshScreen;
-   // level.LevelRefresh();
-      //  input = getch();
-        this_thread::sleep_for(chrono::milliseconds(50));
+   
+        this_thread::sleep_for(chrono::milliseconds(150));
         if(mykbhit())
         {
             input = mygetch();
-    if (input=='w')
+            if (input=='w')
         {
-            //cout<<"sadsddasdasdsad";
-           
-           // level.level1[6][6+x] = 'X';
-         //   x++;
-         //   input = 'q';
-           // player.Move('U');
+         
             level.LevelUpdate('U');
         }
            else if (input=='s')
             {
-                //cout<<"sadsddasdasdsad";
                 
-                // level.level1[6][6+x] = 'X';
-                //   x++;
-                //   input = 'q';
-                // player.Move('U');
                 level.LevelUpdate('D');
             }
           else  if (input=='d')
             {
-                //cout<<"sadsddasdasdsad";
-                
-                // level.level1[6][6+x] = 'X';
-                //   x++;
-                //   input = 'q';
-                // player.Move('U');
+               
                 level.LevelUpdate('R');
             }
            else if (input=='a')
             {
-                //cout<<"sadsddasdasdsad";
-                
-                // level.level1[6][6+x] = 'X';
-                //   x++;
-                //   input = 'q';
-                // player.Move('U');
+               
                 level.LevelUpdate('L');
             }
-    else{
-           
-            //tick= false;
+          
         }
-       
-    }
   
     
    
@@ -97,10 +70,7 @@ int main()
     
         
         
-        
-       // seconds_since_start = difftime( time(0), start)*60;
-        //this_thread::sleep_for(chrono::milliseconds(200));
-       cout<<refreshScreen;
+        cout<<refreshScreen;
        level.LevelRefresh();
         
         

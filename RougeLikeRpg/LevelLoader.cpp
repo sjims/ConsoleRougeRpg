@@ -6,6 +6,11 @@
 //  Copyright © 2017 Ilia Sviatlovich. All rights reserved.
 //
 
+#include <chrono>
+#include <thread>
+#include <fcntl.h>
+
+
 #include "LevelLoader.hpp"
 #include <fstream>
 //#include <vector>
@@ -15,7 +20,7 @@ using namespace std;
 #include "Enemy.hpp"
 
 Player player;
-Enemy enemy;
+//Enemy enemy;
 vector <Enemy> enemes;
 
 LevelLoader::LevelLoader(class Player &_player)
@@ -61,9 +66,11 @@ level1[6][6] = 'E';
             }
             if(level1[i][y]=='E')
             {
-                enemy.X=i;
-                enemy.Y=y;
-                enemes.push_back(enemy);
+                //enemy.X=i;
+                //enemy.Y=y;
+                enemes.push_back(Enemy());
+                enemes.back().X=i;
+                enemes.back().Y=y;
             }
             
         }
@@ -109,21 +116,57 @@ void LevelLoader::LevelUpdate(char dir)
    }
    
     
-    for(int i =0 ; i< enemes.size();i++)
-    {
-    char enemyDir = enemes[i].GotDir();
-    if((level1[enemes[i].X][enemes[i].Y+1] != '#')&&(enemyDir=='R'))
-    {
-        enemes[i].Y++;
-    level1[enemes[i].X][enemes[i].Y] = 'E';
-    level1[enemes[i].X][enemes[i].Y-1] = '.';
-    
-    }
-   
-    
-    }
+
     
   }
+
+
+void LevelLoader::MoveEnemy()
+{
+   
+   // cout<<enemyDir<<endl;
+    for(int i =0 ; i< enemes.size();i++)
+    {
+       // char enemyDir = enemes[i].GotDir();
+        if((level1[enemes[i].X][enemes[i].Y+1] != '#')&&(enemes[i].GotDir()=='R'))
+        {
+            enemes[i].Y++;
+            level1[enemes[i].X][enemes[i].Y] = 'E';
+            level1[enemes[i].X][enemes[i].Y-1] = '.';
+            
+            
+        }
+        else if((level1[enemes[i].X][enemes[i].Y-1] != '#')&&(enemes[i].GotDir()=='L'))
+            
+        {
+            enemes[i].Y--;
+            level1[enemes[i].X][enemes[i].Y] = 'E';
+            level1[enemes[i].X][enemes[i].Y+1] = '.';
+            
+        }
+        else if((level1[enemes[i].X-1][enemes[i].Y] != '#')&&(enemes[i].GotDir()=='U'))
+            
+        {
+            enemes[i].X--;
+            level1[enemes[i].X][enemes[i].Y] = 'E';
+            level1[enemes[i].X+1][enemes[i].Y] = '.';
+            
+        }
+        else if((level1[enemes[i].X+1][enemes[i].Y] != '#')&&(enemes[i].GotDir()=='D'))
+            
+        {
+            enemes[i].X++;
+            level1[enemes[i].X][enemes[i].Y] = 'E';
+            level1[enemes[i].X-1][enemes[i].Y] = '.';
+             
+        }
+        
+        
+    }
+    
+    
+}
+
 void LevelLoader::LevelRefresh()
 {
  
@@ -137,7 +180,9 @@ void LevelLoader::LevelRefresh()
         cout<<endl;
     }
     
-    cout<<player.HP<<endl;;
+    cout<<player.HP<<endl;
+    
+    MoveEnemy();
 }
 
 void LevelLoader::PlayerCoords(int &x,  int &y )
