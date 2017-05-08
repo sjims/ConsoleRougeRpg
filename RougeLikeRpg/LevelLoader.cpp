@@ -12,13 +12,16 @@
 //#include <string>
 using namespace std;
 #include "Player.hpp"
+#include "Enemy.hpp"
 
- Player player;
-
+Player player;
+Enemy enemy;
+vector <Enemy> enemes;
 
 LevelLoader::LevelLoader(class Player &_player)
 {
     player = _player;
+    
     
     
     
@@ -46,7 +49,7 @@ void LevelLoader::LoadFromFile()
         level1.push_back(level);
     }
     
-
+level1[6][6] = 'E';
     for (int i= 0; i<level1.size(); i++) {
         for (int y = 0; y<level1[i].size(); y++) {
             
@@ -55,7 +58,14 @@ void LevelLoader::LoadFromFile()
            {
                 player._playerX=i;
                 player._playerY=y;
-                           }
+            }
+            if(level1[i][y]=='E')
+            {
+                enemy.X=i;
+                enemy.Y=y;
+                enemes.push_back(enemy);
+            }
+            
         }
          cout<<endl;
     }
@@ -97,26 +107,27 @@ void LevelLoader::LevelUpdate(char dir)
        player.HP-=10;
        
    }
-    //нажатая кнопка
-    //подвигать игрока
-    //playerX,PlayerY
-    //подвигать врага
-   /* for(int i =0 ; i< enimes.size();i++)
+   
+    
+    for(int i =0 ; i< enemes.size();i++)
     {
-        if
-        enemy[i].Update();
-    }*/
-   // LevelRefresh();
-}
+    char enemyDir = enemes[i].GotDir();
+    if((level1[enemes[i].X][enemes[i].Y+1] != '#')&&(enemyDir=='R'))
+    {
+        enemes[i].Y++;
+    level1[enemes[i].X][enemes[i].Y] = 'E';
+    level1[enemes[i].X][enemes[i].Y-1] = '.';
+    
+    }
+   
+    
+    }
+    
+  }
 void LevelLoader::LevelRefresh()
 {
  
-    //int xX = player._playerX;
-    //int yY = player._playerY;
     
-    
-    
-    //level1[xX][yY] = 'P';
     for (int i= 0; i<level1.size(); i++) {
         for (int y = 0; y<level1[i].size(); y++) {
             
