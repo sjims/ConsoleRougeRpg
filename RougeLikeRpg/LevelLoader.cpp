@@ -23,9 +23,9 @@ Player player;
 //Enemy enemy;
 vector <Enemy> enemes;
 
-LevelLoader::LevelLoader(class Player &_player)
+LevelLoader::LevelLoader()
 {
-    player = _player;
+    
     
     
     
@@ -81,32 +81,34 @@ level1[6][6] = 'E';
 void LevelLoader::LevelUpdate(char dir)
 {
     
-   if((level1[player._playerX][player._playerY+1] != '#')&&(dir=='R'))
+    
+   if((dir=='R')&&(!CollisionCheck(player._playerX, player._playerY+1)))
      
    {
-    player.Move(dir);
+   // player.Move(dir);
+       player._playerY++;
     level1[player._playerX][player._playerY] = 'P';
     level1[player._playerX][player._playerY-1] = '.';
     
    }
-    else if((level1[player._playerX][player._playerY-1] != '#')&&(dir=='L'))
+    else if((dir=='L')&&(!CollisionCheck(player._playerX, player._playerY-1)))
         
     {
-        player.Move(dir);
+        player._playerY--;
         level1[player._playerX][player._playerY] = 'P';
         level1[player._playerX][player._playerY+1] = '.';
     }
-    else if((level1[player._playerX-1][player._playerY] != '#')&&(dir=='U'))
+    else if((dir=='U')&&(!CollisionCheck(player._playerX-1, player._playerY)))
         
     {
-        player.Move(dir);
+        player._playerX--;
         level1[player._playerX][player._playerY] = 'P';
         level1[player._playerX+1][player._playerY] = '.';
     }
-    else if((level1[player._playerX+1][player._playerY] != '#')&&(dir=='D'))
+    else if((dir=='D')&&(!CollisionCheck(player._playerX+1, player._playerY)))
         
     {
-        player.Move(dir);
+         player._playerX++;
         level1[player._playerX][player._playerY] = 'P';
         level1[player._playerX-1][player._playerY] = '.';
     }
@@ -121,14 +123,34 @@ void LevelLoader::LevelUpdate(char dir)
   }
 
 
+bool LevelLoader::CollisionCheck(int a, int b)
+{
+    //char coll[2] ={'#','E'};
+    if (level1[a][b] == '#')
+    {
+       return true;
+    }
+    if (level1[a][b] == 'E') {
+        
+        player.HP-=10;
+        return true;
+    }
+    if (level1[a][b] == 'W') {
+        
+        player.AddItem();
+        return false;
+    }
+    return false;
+}
+
 void LevelLoader::MoveEnemy()
 {
    
    // cout<<enemyDir<<endl;
     for(int i =0 ; i< enemes.size();i++)
     {
-       // char enemyDir = enemes[i].GotDir();
-        if((level1[enemes[i].X][enemes[i].Y+1] != '#')&&(enemes[i].GotDir()=='R'))
+       char enemyDir = enemes[i].GotDir();
+        if((level1[enemes[i].X][enemes[i].Y+1] != '#')&&(enemyDir=='R'))
         {
             enemes[i].Y++;
             level1[enemes[i].X][enemes[i].Y] = 'E';
@@ -136,7 +158,7 @@ void LevelLoader::MoveEnemy()
             
             
         }
-        else if((level1[enemes[i].X][enemes[i].Y-1] != '#')&&(enemes[i].GotDir()=='L'))
+        if((level1[enemes[i].X][enemes[i].Y-1] != '#')&&(enemyDir=='L'))
             
         {
             enemes[i].Y--;
@@ -144,7 +166,7 @@ void LevelLoader::MoveEnemy()
             level1[enemes[i].X][enemes[i].Y+1] = '.';
             
         }
-        else if((level1[enemes[i].X-1][enemes[i].Y] != '#')&&(enemes[i].GotDir()=='U'))
+         if((level1[enemes[i].X-1][enemes[i].Y] != '#')&&(enemyDir=='U'))
             
         {
             enemes[i].X--;
@@ -152,7 +174,7 @@ void LevelLoader::MoveEnemy()
             level1[enemes[i].X+1][enemes[i].Y] = '.';
             
         }
-        else if((level1[enemes[i].X+1][enemes[i].Y] != '#')&&(enemes[i].GotDir()=='D'))
+         if((level1[enemes[i].X+1][enemes[i].Y] != '#')&&(enemyDir=='D'))
             
         {
             enemes[i].X++;
@@ -180,9 +202,18 @@ void LevelLoader::LevelRefresh()
         cout<<endl;
     }
     
-    cout<<player.HP<<endl;
+    cout<<player.HP<<"            "; player.PrintInventory();
+    cout<<endl;
     
     MoveEnemy();
+}
+bool LevelLoader::IsAlive()
+{
+    if(player.HP<=0)
+    {
+        return false;
+    }
+    return true;
 }
 
 void LevelLoader::PlayerCoords(int &x,  int &y )

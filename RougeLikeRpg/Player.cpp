@@ -9,7 +9,8 @@
 #include "Player.hpp"
 #include <iostream>
 #include "LevelLoader.hpp"
-
+#include "Inventory.hpp"
+Inventory inventory;
 Player::Player()
 {
     
@@ -47,3 +48,14 @@ void Player::Move(char dir)
     
 }
 
+void Player::PrintInventory()
+{
+    inventory.PrintInventory();
+    
+}
+
+
+void Player::AddItem()
+{
+    inventory.num+=1;
+}

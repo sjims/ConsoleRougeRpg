@@ -1,14 +1,13 @@
 #include <iostream>
 #include <string>
 #include "myconio_mac.h" // conio заменитель для getch() - windows функция
-
 #include "LevelLoader.hpp"
 //#include <time.h>
 
 //#include <chrono>
 #include <thread>
 #include <fcntl.h>
-#include "Player.hpp"
+
 
 using namespace std;
 int mygetch();
@@ -17,27 +16,17 @@ int mykbhit();
 int main()
 {
     
- string refreshScreen (100,'\n');
-
+    string refreshScreen (100,'\n');
     char input='p';
-    
- bool dead = false;
-
-    
-   
-   // level.level1[6][6] = 'X';
-    
-    
-    Player player;
-    LevelLoader level(player);
+    LevelLoader level;
     level.LoadFromFile();
-    while(true)
+    
+    
+    
+    while(level.IsAlive())
     {
         
-        
-        dead = player.HP>0;
-   
-        this_thread::sleep_for(chrono::milliseconds(150));
+        this_thread::sleep_for(chrono::milliseconds(100));
         if(mykbhit())
         {
             input = mygetch();
@@ -77,6 +66,11 @@ int main()
     }
     return 0;
 }
+
+
+
+
+
 
 
 

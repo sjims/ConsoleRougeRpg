@@ -28,4 +28,6 @@ public:
     Player();
   
     void Move(char dir);
+    void PrintInventory();
+    void AddItem();
 };
