@@ -85,10 +85,10 @@ void LevelLoader::LevelUpdate(char dir)
    if((dir=='R')&&(!CollisionCheck(player._playerX, player._playerY+1)))
      
    {
-   // player.Move(dir);
+   
        player._playerY++;
-    level1[player._playerX][player._playerY] = 'P';
-    level1[player._playerX][player._playerY-1] = '.';
+       level1[player._playerX][player._playerY] = 'P';
+       level1[player._playerX][player._playerY-1] = '.';
     
    }
     else if((dir=='L')&&(!CollisionCheck(player._playerX, player._playerY-1)))

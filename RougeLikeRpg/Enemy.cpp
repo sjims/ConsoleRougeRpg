@@ -22,7 +22,7 @@ Enemy::Enemy()
 
 char Enemy::GotDir(){
     
-   static std::mt19937 randomGenerator(time(NULL));
+   static std::mt19937 randomGenerator(int(time(NULL)));
     
     std::uniform_int_distribution<int> choice(0,3);
    

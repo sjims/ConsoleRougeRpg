@@ -26,8 +26,6 @@ public:
     int _playerY=0;
     
     Player();
-  
-    void Move(char dir);
     void PrintInventory();
     void AddItem();
 };

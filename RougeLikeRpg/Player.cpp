@@ -19,35 +19,6 @@ Player::Player()
 }
 
 
-
-void Player::Move(char dir)
-{
-    
-    char _dir=dir;
-    switch (_dir) {
-        case 'R':
-            _playerY+=1;
-         
-            break;
-        case 'L':
-            _playerY-=1;
-         
-            break;
-        case 'U':
-            _playerX-=1;
-          
-            break;
-        case 'D':
-            _playerX+=1;
-                       break;
-            
-        default:
-            break;
-    }
-    
-    
-}
-
 void Player::PrintInventory()
 {
     inventory.PrintInventory();
