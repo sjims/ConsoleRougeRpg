@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		346D83371EBDCBA7006E6E2E /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346D83351EBDCBA7006E6E2E /* Player.cpp */; };
+		34BA7FB41EC0A918003BAF3D /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34BA7FB21EC0A918003BAF3D /* Enemy.cpp */; };
+		34BA7FB71EC0DBFE003BAF3D /* Inventory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34BA7FB51EC0DBFE003BAF3D /* Inventory.cpp */; };
 		34DAFDFC1EBB691A006C7691 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34DAFDFB1EBB691A006C7691 /* main.cpp */; };
 		34FD46E01EBBB0DD00F80BD0 /* LevelLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FD46DE1EBBB0DD00F80BD0 /* LevelLoader.cpp */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,10 @@
 /* Begin PBXFileReference section */
 		346D83351EBDCBA7006E6E2E /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		346D83361EBDCBA7006E6E2E /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
+		34BA7FB21EC0A918003BAF3D /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		34BA7FB31EC0A918003BAF3D /* Enemy.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Enemy.hpp; sourceTree = "<group>"; };
+		34BA7FB51EC0DBFE003BAF3D /* Inventory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Inventory.cpp; sourceTree = "<group>"; };
+		34BA7FB61EC0DBFE003BAF3D /* Inventory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Inventory.hpp; sourceTree = "<group>"; };
 		34DAFDF81EBB691A006C7691 /* RougeLikeRpg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RougeLikeRpg; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DAFDFB1EBB691A006C7691 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		34FD46DE1EBBB0DD00F80BD0 /* LevelLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelLoader.cpp; sourceTree = "<group>"; };
@@ -68,6 +74,10 @@
 				34FD46DF1EBBB0DD00F80BD0 /* LevelLoader.hpp */,
 				346D83351EBDCBA7006E6E2E /* Player.cpp */,
 				346D83361EBDCBA7006E6E2E /* Player.hpp */,
+				34BA7FB21EC0A918003BAF3D /* Enemy.cpp */,
+				34BA7FB31EC0A918003BAF3D /* Enemy.hpp */,
+				34BA7FB51EC0DBFE003BAF3D /* Inventory.cpp */,
+				34BA7FB61EC0DBFE003BAF3D /* Inventory.hpp */,
 			);
 			path = RougeLikeRpg;
 			sourceTree = "<group>";
@@ -129,8 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34BA7FB41EC0A918003BAF3D /* Enemy.cpp in Sources */,
 				34DAFDFC1EBB691A006C7691 /* main.cpp in Sources */,
 				34FD46E01EBBB0DD00F80BD0 /* LevelLoader.cpp in Sources */,
+				34BA7FB71EC0DBFE003BAF3D /* Inventory.cpp in Sources */,
 				346D83371EBDCBA7006E6E2E /* Player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +242,7 @@
 		34DAFE001EBB691A006C7691 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -237,6 +250,7 @@
 		34DAFE011EBB691A006C7691 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
