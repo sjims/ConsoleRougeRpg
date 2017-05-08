@@ -3,9 +3,9 @@
 #include "myconio_mac.h" // conio заменитель для getch() - windows функция
 
 #include "LevelLoader.hpp"
-#include <time.h>
+//#include <time.h>
 
-#include <chrono>
+//#include <chrono>
 #include <thread>
 #include <fcntl.h>
 #include "Player.hpp"
