@@ -35,12 +35,12 @@ LevelLoader::LevelLoader()
 void LevelLoader::LoadFromFile()
 {
     ifstream inputFile;
-    ofstream outputFile;
+   // ofstream outputFile;
     
-    outputFile.open("Level2.txt");
+   // outputFile.open("Level2.txt");
     
     //outputFile<<"Hello word";
-    outputFile.close();
+    //outputFile.close();
     inputFile.open("/Users/sjims/Documents/Game_development/C_plus_plus_XCODE/RougeLikeRpg/RougeLikeRpg/Level1.txt");
     if(inputFile.fail())
     {
@@ -112,11 +112,7 @@ void LevelLoader::LevelUpdate(char dir)
         level1[player._playerX][player._playerY] = 'P';
         level1[player._playerX-1][player._playerY] = '.';
     }
-   else{
-       player.HP-=10;
-       
-   }
-   
+
     
 
     
@@ -125,7 +121,7 @@ void LevelLoader::LevelUpdate(char dir)
 
 bool LevelLoader::CollisionCheck(int a, int b)
 {
-    //char coll[2] ={'#','E'};
+    
     if (level1[a][b] == '#')
     {
        return true;
