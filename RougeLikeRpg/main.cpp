@@ -7,7 +7,7 @@
 //#include <chrono>
 #include <thread>
 #include <fcntl.h>
-
+#include "Player.hpp"
 
 using namespace std;
 int mygetch();
@@ -15,17 +15,19 @@ int mykbhit();
 
 int main()
 {
-    
+    Player pl;
     string refreshScreen (100,'\n');
     char input='p';
-    LevelLoader level;
+    LevelLoader level(pl);
+    
+    
     level.LoadFromFile();
     
     
     
     while(level.IsAlive())
     {
-        
+        pl.HP=50;
         this_thread::sleep_for(chrono::milliseconds(100));
         if(mykbhit())
         {

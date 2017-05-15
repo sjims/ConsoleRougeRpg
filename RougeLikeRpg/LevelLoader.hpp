@@ -27,7 +27,7 @@ public:
     void LevelUpdate(char dir);
     void LevelRefresh();
     void PlayerCoords(int &x,  int &y );
-    LevelLoader();
+    LevelLoader(class Player &pl);
     vector<string> level1;
     bool CollisionCheck(int a, int b);
     

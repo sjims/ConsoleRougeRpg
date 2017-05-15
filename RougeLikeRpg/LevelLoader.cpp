@@ -19,14 +19,14 @@ using namespace std;
 #include "Player.hpp"
 #include "Enemy.hpp"
 
-Player player;
+Player *player;
 //Enemy enemy;
 vector <Enemy> enemes;
 
-LevelLoader::LevelLoader()
+LevelLoader::LevelLoader(Player &pl)
 {
     
-    
+    player=&pl;
     
     
     
@@ -61,8 +61,8 @@ level1[6][6] = 'E';
                         cout<< level1[i][y];
            if(level1[i][y]=='P')
            {
-                player._playerX=i;
-                player._playerY=y;
+                player->_playerX=i;
+                player->_playerY=y;
             }
             if(level1[i][y]=='E')
             {
@@ -82,35 +82,35 @@ void LevelLoader::LevelUpdate(char dir)
 {
     
     
-   if((dir=='R')&&(!CollisionCheck(player._playerX, player._playerY+1)))
+   if((dir=='R')&&(!CollisionCheck(player->_playerX, player->_playerY+1)))
      
    {
    
-       player._playerY++;
-       level1[player._playerX][player._playerY] = 'P';
-       level1[player._playerX][player._playerY-1] = '.';
+       player->_playerY++;
+       level1[player->_playerX][player->_playerY] = 'P';
+       level1[player->_playerX][player->_playerY-1] = '.';
     
    }
-    else if((dir=='L')&&(!CollisionCheck(player._playerX, player._playerY-1)))
+    else if((dir=='L')&&(!CollisionCheck(player->_playerX, player->_playerY-1)))
         
     {
-        player._playerY--;
-        level1[player._playerX][player._playerY] = 'P';
-        level1[player._playerX][player._playerY+1] = '.';
+        player->_playerY--;
+        level1[player->_playerX][player->_playerY] = 'P';
+        level1[player->_playerX][player->_playerY+1] = '.';
     }
-    else if((dir=='U')&&(!CollisionCheck(player._playerX-1, player._playerY)))
+    else if((dir=='U')&&(!CollisionCheck(player->_playerX-1, player->_playerY)))
         
     {
-        player._playerX--;
-        level1[player._playerX][player._playerY] = 'P';
-        level1[player._playerX+1][player._playerY] = '.';
+        player->_playerX--;
+        level1[player->_playerX][player->_playerY] = 'P';
+        level1[player->_playerX+1][player->_playerY] = '.';
     }
-    else if((dir=='D')&&(!CollisionCheck(player._playerX+1, player._playerY)))
+    else if((dir=='D')&&(!CollisionCheck(player->_playerX+1, player->_playerY)))
         
     {
-         player._playerX++;
-        level1[player._playerX][player._playerY] = 'P';
-        level1[player._playerX-1][player._playerY] = '.';
+         player->_playerX++;
+        level1[player->_playerX][player->_playerY] = 'P';
+        level1[player->_playerX-1][player->_playerY] = '.';
     }
 
     
@@ -128,12 +128,12 @@ bool LevelLoader::CollisionCheck(int a, int b)
     }
     if (level1[a][b] == 'E') {
         
-        player.HP-=10;
+        player->HP-=10;
         return true;
     }
     if (level1[a][b] == 'W') {
         
-        player.AddItem();
+        player->AddItem();
         return false;
     }
     return false;
@@ -198,14 +198,14 @@ void LevelLoader::LevelRefresh()
         cout<<endl;
     }
     
-    cout<<player.HP<<"            "; player.PrintInventory();
+    cout<<player->HP<<"            "; player->PrintInventory();
     cout<<endl;
     
     MoveEnemy();
 }
 bool LevelLoader::IsAlive()
 {
-    if(player.HP<=0)
+    if(player->HP<=0)
     {
         return false;
     }
