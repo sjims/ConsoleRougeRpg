@@ -27,7 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		346967891ECA3FF80083635F /* conio_win */ = {isa = PBXFileReference; lastKnownFileType = folder; path = conio_win; sourceTree = "<group>"; };
 		346D83351EBDCBA7006E6E2E /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		346D83361EBDCBA7006E6E2E /* Player.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Player.hpp; sourceTree = "<group>"; };
 		34BA7FB21EC0A918003BAF3D /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
@@ -70,7 +69,6 @@
 		34DAFDFA1EBB691A006C7691 /* RougeLikeRpg */ = {
 			isa = PBXGroup;
 			children = (
-				346967891ECA3FF80083635F /* conio_win */,
 				34DAFDFB1EBB691A006C7691 /* main.cpp */,
 				34FD46DE1EBBB0DD00F80BD0 /* LevelLoader.cpp */,
 				34FD46DF1EBBB0DD00F80BD0 /* LevelLoader.hpp */,
