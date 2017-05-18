@@ -8,6 +8,7 @@
 #include <thread>
 #include <fcntl.h>
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 using namespace std;
 int mygetch();
@@ -16,42 +17,56 @@ int mykbhit();
 int main()
 {
     Player pl;
+
     string refreshScreen (100,'\n');
     char input='p';
+    
+    
     LevelLoader level(pl);
     
     
     level.LoadFromFile();
     
-    
+    int canClear =0;
     
     while(level.IsAlive())
     {
-        pl.HP=50;
-        this_thread::sleep_for(chrono::milliseconds(100));
+        this_thread::sleep_for(chrono::milliseconds(10));
+        if(canClear==20)
+        {
+           level.MoveEnemy();
+           pl.Clear(level);
+           canClear=0;
+            
+        }
         if(mykbhit())
         {
             input = mygetch();
             if (input=='w')
         {
-         
-            level.LevelUpdate('U');
+            pl.Move('U', level);
+            //level.LevelUpdate('U');
         }
            else if (input=='s')
             {
-                
-                level.LevelUpdate('D');
+             pl.Move('D', level);
+               // level.LevelUpdate('D');
             }
           else  if (input=='d')
             {
-               
-                level.LevelUpdate('R');
+               pl.Move('R', level);
+                //level.LevelUpdate('R');
             }
            else if (input=='a')
             {
-               
-                level.LevelUpdate('L');
+               pl.Move('L', level);
+                //level.LevelUpdate('L');
             }
+           else if (input=='f')
+           {
+               
+               pl.Attack(level);
+           }
           
         }
   
@@ -63,7 +78,7 @@ int main()
         
         cout<<refreshScreen;
        level.LevelRefresh();
-        
+        canClear++;
         
     }
     return 0;

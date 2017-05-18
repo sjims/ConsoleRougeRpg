@@ -12,7 +12,7 @@
 
 
 #endif /* LevelLoader_hpp */
-#include <stdio.h>
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -26,14 +26,12 @@ public:
     void LoadFromFile();
     void LevelUpdate(char dir);
     void LevelRefresh();
-    void PlayerCoords(int &x,  int &y );
     LevelLoader(class Player &pl);
     vector<string> level1;
     bool CollisionCheck(int a, int b);
     
     bool IsAlive();
 private:    
-    int _Plx= 0;
-    int _Ply = 0;
+  
     
 };

@@ -9,7 +9,7 @@
 #ifndef Inventory_hpp
 #define Inventory_hpp
 
-#include <stdio.h>
+//#include <stdio.h>
 
 #endif /* Inventory_hpp */
 class Inventory{
